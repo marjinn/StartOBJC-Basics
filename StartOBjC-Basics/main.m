@@ -16,6 +16,15 @@ int main(int argc, const char * argv[])
         // insert code here...
         NSLog(@"Hello, World!");
         
+        int  hours = 24;
+        int minutes = 60;
+        int seconds = 60;
+        
+        int product = 0;
+        product = hours * minutes * seconds;
+        NSLog(@"The Product is %d",product);
+        
+        
     }
     return 0;
 }
