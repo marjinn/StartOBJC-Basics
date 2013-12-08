@@ -7,9 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Player.h"
+#import "MyClass.h"
+#import "Employee.h"
+#import "NSString+NSString_CnvertWSpace.h"
 
 //GlobalVariable
 //int bar;
+
+void classTestFunc(void);
 
 int main(int argc, const char * argv[])
 {
@@ -201,18 +207,18 @@ int main(int argc, const char * argv[])
         //for unsigned      -->  add 'unsigned' modifier
         //unsigned int myChore;
         //for long          --> add 'long' modifier
-        //long int myChore;
+        //long int myChor;
         //on 32 bit -2.1 billion to +2.1 billion 4 bytes
         //on 64-bit -9223372036854775808 to
         //9223372036854775808                8 bytes
         //for long long     --> add 'long long' modifier
-        //long long int myChore;
+        //long long int myChre;
         //on 32 bit -9223372036854775808 to
         //9223372036854775808                8 bytes
         //on 64-bit -9223372036854775808 to
         //9223372036854775808                8 bytes
         //for short         --> add 'short' modifier
-        //short int smallScore
+        //short int smallScre;
         //on 32 bit -32,767 to 32,767       2 bytes
         //both signed and unsigned
         //short unsigned int smallScore;//all positive values
@@ -305,12 +311,224 @@ int main(int argc, const char * argv[])
         NSString* message = @"Hello";
         NSLog(@"NSstring print out %@",message);
         
+        NSDate* myDate = [NSDate date];
+        myDate = nil;
+        
+        
+        classTestFunc();
+        
+        //MYCLASS Test
+        MyClass* myClass = [[MyClass alloc]init];
+        [myClass logMessage];
+        //[myClass release];//Non ARC
+        
+        /*########*/
+        //ARRAY
+        /*########*/
+        int multiPle[5] = {50,60,70,80,90};
+        NSLog(@"The value of the 3rd element is %i",multiPle[2]);
+        
+        NSString* myStringArray[5] = {@"0",@"1",@"2",@"3",@"4"};
+        NSLog(@"The value of the 3rd element is %@",myStringArray[2]);
+        
+        //NSString* anotherArray[5];
+        //anotherArray[0] = [[NSString alloc]initWithString:@"HEllo"];
+        //WillCause Xcode to prompt to use @"HEllo"
+        //[myStringArray[0] release];//NonARC
+        
+        
+        NSArray* myArray;
+        myArray = [[NSArray alloc]initWithObjects:@"one",@"two", nil];
+        //OR autoreleased way
+        //myArray = [NSArray arrayWithObjects:@"one",@"two", nil];
+        NSLog(@"Object in Array at position 1 - %@",[myArray objectAtIndex:0]);
+        //[myArray release];//non-ARC
+        
+        NSMutableArray* myMutablearray;
+        myMutablearray = [NSMutableArray arrayWithObjects:@"1",@"2", nil];
+        //add
+        [myMutablearray addObject:@"3"];
+        //remove
+        [myMutablearray removeObjectAtIndex:0];
+        NSLog(@"The array count is %lu and the second \
+              element is:%@",(unsigned long)[myMutablearray count],[myMutablearray objectAtIndex:1]);
+        
+        
+        /*########*/
+        //Dictionary
+        /*########*/
+        
+        NSDictionary* myDict;
+        myDict = [NSDictionary dictionaryWithObjectsAndKeys:
+                  @"Arizona",@"AZ",
+                  @"California",@"CA",
+                  @"Colorado",@"CO",
+                  @"Hawaai",@"HI",
+                  @"New Mexico",@"NM"
+                  ,nil];
+        
+        NSString* someState = @"AZ";
+        NSLog(@" %@ is for %@",someState,[myDict objectForKey:someState]);
+        
+        NSMutableDictionary* myMutableDict;
+        myMutableDict = [NSMutableDictionary dictionaryWithDictionary:myDict];
+        //add
+        [myMutableDict setObject:@"Florida" forKey:@"FL"];
+        
+        //lOOPINg through Dictionary
+        //Fast Enumeration
+        for (id key in myMutableDict) {
+           NSLog(@"key->%@ value->%@",key,[myMutableDict objectForKey:key]);
+        }
+        //With Blocks
+        [myMutableDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            NSLog(@"key->%@ value->%@",key,obj);
+        }];
+        
+        /*########*/
+        //FILE OPERATIONS
+        /*########*/
+        NSFileManager* fileMgr;
+        fileMgr = [[NSFileManager alloc]init];
+
+        NSString* path = @"\
+        /Users/marjinn/Desktop/newfile.txt";
+        //file exists
+        if ([fileMgr fileExistsAtPath:path])
+        {
+            NSLog(@"Yes it does");
+            
+            //grab attributes
+            __autoreleasing NSError* error = nil;
+            NSDictionary* fileattribs;
+            fileattribs = [fileMgr attributesOfItemAtPath:path
+                                                    error:&error];
+            for (id key in fileattribs)
+            {
+                NSLog(@"key->%@ value->%@",key,[fileattribs objectForKey:key]);
+            }
+            //Rename
+            __autoreleasing NSError* fileMvErr = nil;
+            //nil is -->IONDRVLibraries.h
+                //#ifndef NULL
+                //#define NULL    __DARWIN_NULL
+                //#endif /* ! NULL */
+                //#ifndef nil
+                //#define nil NULL
+                //#endif /* ! nil */
+            
+            //Nil is (void*)0
+                    /* objc.h
+                        #ifndef Nil
+                        # if __has_feature(cxx_nullptr)
+                        #   define Nil nullptr
+                        # else
+                        #   define Nil __DARWIN_NULL
+                        # endif
+                        #endif
+            
+                        #ifndef nil
+                        # if __has_feature(cxx_nullptr)
+                        #   define nil nullptr
+                        # else
+                        #   define nil __DARWIN_NULL
+                        # endif
+                        #endif
+                        */
+            //from _types.h
+//                        #ifdef __cplusplus
+//                        #ifdef __GNUG__
+//                        #define __DARWIN_NULL __null
+//                        #else /* ! __GNUG__ */
+//                        #ifdef __LP64__
+//                        #define __DARWIN_NULL (0L)
+//                        #else /* !__LP64__ */
+//                        #define __DARWIN_NULL 0
+//                        #endif /* __LP64__ */
+//                        #endif /* __GNUG__ */
+//                        #else /* ! __cplusplus */
+//                        #define __DARWIN_NULL ((void *)0)
+//                        #endif /* __cplusplus */
+            
+            [fileMgr moveItemAtPath:path
+                             toPath:@"/Users/marjinn/newFile.txt" error:&fileMvErr];
+        }
+        else
+        {
+            NSLog(@"No it doesn't");
+        }
+        
+        
+        //URL
+        //Scheme:/domain/path  --file://
+        NSString* thepath = @"\
+        /Users/marjinn/Desktop/newfile.txt";
+        NSURL *myURL;
+        myURL = [NSURL fileURLWithPath:thepath];
+        
+        __autoreleasing NSError* flURLErr = nil;
+        if ([fileMgr fileExistsAtPath:thepath])
+        {
+            [fileMgr moveItemAtURL:myURL
+                             toURL:[NSURL fileURLWithPath:@"/Users/marjinn/newFile.txt"]
+                             error:&flURLErr];
+        }
+        
+        //Read from File
+        __autoreleasing NSError* flRdErr = nil;
+        NSString* text;
+        text = [NSString stringWithContentsOfURL:myURL
+                                        encoding:NSUTF8StringEncoding
+                                           error:&flRdErr];
+        NSLog(@"File COntent ->%@",text);
+        
+        //Write to File
+        __autoreleasing NSError* flWrtErr;
+        NSMutableString* nuMutableStr;
+        nuMutableStr = [NSMutableString stringWithString:@"This is my File"];
+        [nuMutableStr writeToURL:myURL
+                       atomically:YES
+                         encoding:NSUTF8StringEncoding
+                            error:&flWrtErr];
+        NSLog(@"File COntent after Write ->%@",text);
+        
+        /*########*/
+        //ARCHIVING AND UNARCHIVE
+        /*########*/
+        //[Employee Class]
+        
+        Employee* bob;
+        bob = [[Employee alloc]init];
+        [bob setName:@"Bob Jones"];
+        [bob setGrade:21];
+        
+        NSLog(@"Details are %@",[bob description]);
+        
+        //save This
+        [NSKeyedArchiver archiveRootObject:bob
+                                    toFile:@"/Users/marjinn/bob.plist"];
+        
+        //retrieve
+        Employee* fred;
+        fred = [NSKeyedUnarchiver unarchiveObjectWithFile:@"/Users/marjinn/bob.plist"];
+        NSLog(@"This is freed %@",[fred description]);
+        
+        
+        //NSSTRING CATEGORY
+        NSString* sentence;
+        sentence = @"The quick brown fox jumped over the lazy dog";
+        NSLog(@"The sentence is %@",[sentence convertWhiteSpace]);
+        
+        [sentence setDeflt:@"GroundUP"];
+        
+        NSLog(@"GroundUP->%@",[sentence deflt]);
     }
     return 0;
 }
 
-
+/*########*/
 //functions
+/*########*/
 /*
  returnType name(pramaters){
  }
@@ -338,5 +556,50 @@ void mynuFunc(NSString* foo)
     return;
 }
 
+/*########*/
+//CLASS
+/*########*/
 
+@interface Employ : NSObject
+{
+    @private
+    NSString* name;
+    NSDate* birthDate;
+}
+-(void)myMethod;
+
+@end
+
+@implementation Employ
+
+-(void)myMethod
+{
+    NSLog(@"myMethod Called");
+}
+
+
+@end
+
+//func that uses the class
+void classTestFunc(void)
+{
+    Employ* fred = [[Employ alloc]init];
+    [fred myMethod];
+    //[fred release];//Non ARC
+    fred = nil;
+    
+    Player* nuPlayer = [[Player alloc]init];
+    //[nuPlayer release];
+    nuPlayer = nil;
+    
+}
+
+//- (void) setHasReleaseToRefreshHeaderView:(BOOL)hasReleaseToRefreshHeaderView
+//{
+//    self.hasReleaseToRefreshHeaderView = hasReleaseToRefreshHeaderView;
+//}
+//- (BOOL) hasReleaseToRefreshHeaderView
+//{
+//    return self.hasReleaseToRefreshHeaderView;
+//}
 

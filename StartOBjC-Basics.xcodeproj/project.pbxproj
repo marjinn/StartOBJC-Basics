@@ -10,6 +10,10 @@
 		15AE8E5318528BC400E3BE91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15AE8E5218528BC400E3BE91 /* Foundation.framework */; };
 		15AE8E5618528BC400E3BE91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE8E5518528BC400E3BE91 /* main.m */; };
 		15AE8E5A18528BC500E3BE91 /* StartOBjC_Basics.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15AE8E5918528BC500E3BE91 /* StartOBjC_Basics.1 */; };
+		15B4F5E1185381A600131C0D /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4F5E0185381A600131C0D /* Player.m */; };
+		15B4F5E41853ABB900131C0D /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4F5E31853ABB900131C0D /* MyClass.m */; };
+		15B4F5E71853CF4C00131C0D /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4F5E61853CF4C00131C0D /* Employee.m */; };
+		15B4F5EA1853F3C900131C0D /* NSString+NSString_CnvertWSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4F5E91853F3C900131C0D /* NSString+NSString_CnvertWSpace.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +35,14 @@
 		15AE8E5518528BC400E3BE91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		15AE8E5818528BC400E3BE91 /* StartOBjC-Basics-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StartOBjC-Basics-Prefix.pch"; sourceTree = "<group>"; };
 		15AE8E5918528BC500E3BE91 /* StartOBjC_Basics.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = StartOBjC_Basics.1; sourceTree = "<group>"; };
+		15B4F5DF185381A600131C0D /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		15B4F5E0185381A600131C0D /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		15B4F5E21853ABB900131C0D /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		15B4F5E31853ABB900131C0D /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		15B4F5E51853CF4C00131C0D /* Employee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
+		15B4F5E61853CF4C00131C0D /* Employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
+		15B4F5E81853F3C900131C0D /* NSString+NSString_CnvertWSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_CnvertWSpace.h"; sourceTree = "<group>"; };
+		15B4F5E91853F3C900131C0D /* NSString+NSString_CnvertWSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_CnvertWSpace.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +86,16 @@
 			isa = PBXGroup;
 			children = (
 				15AE8E5518528BC400E3BE91 /* main.m */,
+				15B4F5DF185381A600131C0D /* Player.h */,
+				15B4F5E0185381A600131C0D /* Player.m */,
+				15B4F5E21853ABB900131C0D /* MyClass.h */,
+				15B4F5E31853ABB900131C0D /* MyClass.m */,
 				15AE8E5918528BC500E3BE91 /* StartOBjC_Basics.1 */,
 				15AE8E5718528BC400E3BE91 /* Supporting Files */,
+				15B4F5E51853CF4C00131C0D /* Employee.h */,
+				15B4F5E61853CF4C00131C0D /* Employee.m */,
+				15B4F5E81853F3C900131C0D /* NSString+NSString_CnvertWSpace.h */,
+				15B4F5E91853F3C900131C0D /* NSString+NSString_CnvertWSpace.m */,
 			);
 			path = "StartOBjC-Basics";
 			sourceTree = "<group>";
@@ -139,6 +159,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B4F5E41853ABB900131C0D /* MyClass.m in Sources */,
+				15B4F5EA1853F3C900131C0D /* NSString+NSString_CnvertWSpace.m in Sources */,
+				15B4F5E71853CF4C00131C0D /* Employee.m in Sources */,
+				15B4F5E1185381A600131C0D /* Player.m in Sources */,
 				15AE8E5618528BC400E3BE91 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +275,7 @@
 				15AE8E5F18528BC500E3BE91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
