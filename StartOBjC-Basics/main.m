@@ -521,6 +521,15 @@ int main(int argc, const char * argv[])
         
         [sentence setDeflt:@"GroundUP"];
         
+        //check if the method exists in a class
+        if ([sentence isKindOfClass:[NSString class]]) {
+            //statements
+        }
+        //OR
+        if ([sentence respondsToSelector:@selector(setDeflt:)]) {
+            //statements
+        }
+        
         NSLog(@"GroundUP->%@",[sentence deflt]);
     }
     return 0;
