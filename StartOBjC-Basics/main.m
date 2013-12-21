@@ -12,6 +12,8 @@
 #import "Employee.h"
 #import "NSString+NSString_CnvertWSpace.h"
 
+#import "Cme.h"
+
 //GlobalVariable
 //int bar;
 
@@ -365,7 +367,7 @@ int main(int argc, const char * argv[])
                   @"Colorado",@"CO",
                   @"Hawaai",@"HI",
                   @"New Mexico",@"NM"
-                  ,nil];
+                  ,nil];//autoreleased object
         
         NSString* someState = @"AZ";
         NSLog(@" %@ is for %@",someState,[myDict objectForKey:someState]);
@@ -382,7 +384,7 @@ int main(int argc, const char * argv[])
         }
         //With Blocks
         [myMutableDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSLog(@"key->%@ value->%@",key,obj);
+            NSLog(@"key->%@ value->%@",key,obj);//
         }];
         
         /*########*/
@@ -451,7 +453,16 @@ int main(int argc, const char * argv[])
 //                        #endif /* __cplusplus */
             
             [fileMgr moveItemAtPath:path
-                             toPath:@"/Users/marjinn/newFile.txt" error:&fileMvErr];
+                             toPath:@"/Users/marjinn/newFile.txt" error:&fileMvErr];//rename
+            
+            //C has a rename Function
+//            int
+//            rename(const char *old, const char *new);
+//            Description	change the name of a file
+//            Availability	OS X (10.5 to 10.5)
+//            Declared In	sysproto.h
+//            Reference	OS X Man Pages
+           //int rename(<#const char *#>, <#const char *#>)
         }
         else
         {
@@ -531,6 +542,20 @@ int main(int argc, const char * argv[])
         }
         
         NSLog(@"GroundUP->%@",[sentence deflt]);
+        
+        
+        
+        
+        //C- WAY TO GO
+        
+        runOnMain();
+        
+        
+        
+        
+        
+        
+        
     }
     return 0;
 }

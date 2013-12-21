@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15108CEA1864E695004D61DB /* Cme.c in Sources */ = {isa = PBXBuildFile; fileRef = 15108CE91864E695004D61DB /* Cme.c */; };
+		159629A4186525C700E02F2C /* KVOObservingClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 159629A1186525C700E02F2C /* KVOObservingClass.m */; };
+		159629A5186525C700E02F2C /* KVOValueClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 159629A3186525C700E02F2C /* KVOValueClass.m */; };
 		15AE8E5318528BC400E3BE91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15AE8E5218528BC400E3BE91 /* Foundation.framework */; };
 		15AE8E5618528BC400E3BE91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE8E5518528BC400E3BE91 /* main.m */; };
 		15AE8E5A18528BC500E3BE91 /* StartOBjC_Basics.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15AE8E5918528BC500E3BE91 /* StartOBjC_Basics.1 */; };
@@ -30,6 +33,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15108CE91864E695004D61DB /* Cme.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Cme.c; sourceTree = "<group>"; };
+		15108CEB1864EA42004D61DB /* Cme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cme.h; sourceTree = "<group>"; };
+		159629A0186525C700E02F2C /* KVOObservingClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVOObservingClass.h; sourceTree = "<group>"; };
+		159629A1186525C700E02F2C /* KVOObservingClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVOObservingClass.m; sourceTree = "<group>"; };
+		159629A2186525C700E02F2C /* KVOValueClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVOValueClass.h; sourceTree = "<group>"; };
+		159629A3186525C700E02F2C /* KVOValueClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVOValueClass.m; sourceTree = "<group>"; };
 		15AE8E4F18528BC400E3BE91 /* StartOBjC-Basics */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "StartOBjC-Basics"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AE8E5218528BC400E3BE91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		15AE8E5518528BC400E3BE91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -57,6 +66,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		159629A6186525D500E02F2C /* KVO */ = {
+			isa = PBXGroup;
+			children = (
+				159629A0186525C700E02F2C /* KVOObservingClass.h */,
+				159629A1186525C700E02F2C /* KVOObservingClass.m */,
+				159629A2186525C700E02F2C /* KVOValueClass.h */,
+				159629A3186525C700E02F2C /* KVOValueClass.m */,
+			);
+			name = KVO;
+			sourceTree = "<group>";
+		};
 		15AE8E4618528BC400E3BE91 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +116,8 @@
 				15B4F5E61853CF4C00131C0D /* Employee.m */,
 				15B4F5E81853F3C900131C0D /* NSString+NSString_CnvertWSpace.h */,
 				15B4F5E91853F3C900131C0D /* NSString+NSString_CnvertWSpace.m */,
+				15108CE91864E695004D61DB /* Cme.c */,
+				15108CEB1864EA42004D61DB /* Cme.h */,
 			);
 			path = "StartOBjC-Basics";
 			sourceTree = "<group>";
@@ -103,6 +125,7 @@
 		15AE8E5718528BC400E3BE91 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				159629A6186525D500E02F2C /* KVO */,
 				15AE8E5818528BC400E3BE91 /* StartOBjC-Basics-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -162,8 +185,11 @@
 				15B4F5E41853ABB900131C0D /* MyClass.m in Sources */,
 				15B4F5EA1853F3C900131C0D /* NSString+NSString_CnvertWSpace.m in Sources */,
 				15B4F5E71853CF4C00131C0D /* Employee.m in Sources */,
+				15108CEA1864E695004D61DB /* Cme.c in Sources */,
 				15B4F5E1185381A600131C0D /* Player.m in Sources */,
+				159629A5186525C700E02F2C /* KVOValueClass.m in Sources */,
 				15AE8E5618528BC400E3BE91 /* main.m in Sources */,
+				159629A4186525C700E02F2C /* KVOObservingClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
