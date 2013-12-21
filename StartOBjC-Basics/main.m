@@ -14,6 +14,16 @@
 
 #import "Cme.h"
 
+#import "predef.h"
+
+//#import "SomeOtherClass.h"
+
+#import "VariableArgumentListExample.h"
+
+
+
+
+
 //GlobalVariable
 //int bar;
 
@@ -548,17 +558,99 @@ int main(int argc, const char * argv[])
         
         //C- WAY TO GO
         
-        runOnMain();
+        runOnMain();//from Cme.h
+        
+       //PREDEF TEST
+        printf("__APPLE__: ,%d\n",__APPLE__);
+        printf("today is %s, the time is %s\n",__DATE__,__TIME__);
+        
+        printf("file %s, line %d\n",__FILE__,__LINE__);
+        printf(" function: %s\n",__FUNCTION__);
+        printf(" pretty function:%s\n",__PRETTY_FUNCTION__);
+        
+        //EXPECTED OUTPUT
+        //__APPLE__: ,1
+        //today is Dec 21 2013, the time is 19:12:49
+        //file /Users/marjinn/Dropbox/NewBeginnings/OBJ_BEG_TO/StartOBjC-Basics/StartOBjC-Basics/main.m, line 566
+        //function: main
+        //pretty function:int main(int, const char **)
+        
+        //someFunction();//from predef.h
+        
+        [SomeCalss someMethod];
+        [SomeCalss someMethod:23 WithArgument:@"sanoj"];
+        
+        //EXPECTED OUTPUT
+        //function: +[SomeCalss someMethod:WithArgument:]
+        //pretty function:+[SomeCalss someMethod:WithArgument:]
+        //I'm most likely running on intel! woo!
+
+        
+        //C++ //This wil cause Linker erroe as main is .m
+        //It needs to b e.mm
+        //SomeOtherClass something ;
+        //something.SomeMemberFunction(23,"hi");
+        //callCPP();
+        
+#if __LITTLE_ENDIAN__
+        printf("I'm most likely running on intel! woo!\n");
+#endif
+#if __BIG_ENDIAN__
+        printf("I'm most likely running on powerPC! woo!\n");
+#endif
+        
+        //######## VARIABLE ARGUMENT LISTS #######
+        int sumbody = 0;
+        
+        sumbody = addEmUp(1,2,3,4,5,6,7,8,9,0);//Cme.h
+        printf("sum of 1..9 is %d\n",sumbody);
+        
+        sumbody = addEmUp(1,3,5,7,9,11,13,0);
+        printf("sum of odds from 1..11 is %d\n",sumbody);
+        
+        /*VARARGS WITH SENTINEL values and __attribute__ used as tag*/
+        printStrings("spicy", nil);//automatically adds nil to the nd
+        printStrings ("spicy", "pony", "head", NULL);
+        //printStrings ("machine", "tool"); // should warn
+                                          //Warns abt missing sentinel in
+                                            //function call
         
         
+        /*VA_ARGS CONDITIONAL LOGGING*/
+        debugLog(10, "thus willnot be seen : %d,%s,%d\n",
+                 10,"hello",23, nil);
+        
+        debugLog(87, "this should be seen: %s,%d\n",
+                 "bork",42,nil);
         
         
+        //VariableArgumentListExample
+        //using va_list OBJ C
         
+        VariableArgumentListExample*  obj = nil;
+        obj = [[VariableArgumentListExample alloc]init];
         
+        //get diff objects for the list as the list expects id
+        NSString* someString;
+        someString = @"someString";
+        
+        NSNumber* num;
+        num = [NSNumber numberWithInt:23];
+        
+        NSDate* date;
+        date = [NSCalendarDate calendarDate];
+        
+        [obj describeObjects:someString,num,date, nil];
+        
+        //QuietLog Usage
+        NSLog (@"NSLog is %@", [NSNumber numberWithInt: 23]);
+        QuietLog (@"QuietLog is %@ %@", [NSNumber numberWithInt: 42],num);
         
     }
     return 0;
-}
+}//main
+
+
 
 /*########*/
 //functions

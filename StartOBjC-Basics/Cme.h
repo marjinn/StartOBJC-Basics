@@ -14,3 +14,9 @@
 #endif
 
 void runOnMain(void);
+
+int addEmUp(int firstNum,...);
+
+void printStrings(char* first, ...) __attribute__((sentinel));
+
+void debugLog (int logLevel, const char* format,...)__attribute__((sentinel));

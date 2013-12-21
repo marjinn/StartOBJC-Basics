@@ -35,6 +35,7 @@
 
 -(NSString *)description
 {
+    printf(" pretty function: %s\n",__PRETTY_FUNCTION__);
     NSString* desc;
     desc = [NSString stringWithFormat:@"Employee: %@, Grade: %i",
             [self name],[self grade]];
