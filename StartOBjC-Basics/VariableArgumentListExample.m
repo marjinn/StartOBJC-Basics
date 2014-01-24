@@ -193,6 +193,8 @@ void QuietLog(NSString* format,... )
     
     //[string release];non ARC
     
+    NSLog(@"This is a niglong literal string"
+          @"Which I have broken ober two lines of code");
     
 }
 

@@ -564,5 +564,136 @@ void debugLog (int logLevel, const char* format,...)
 //############ VARIADIC MACROS ###########
 //########################################
 
+/*USING VARARGS IN A MACRO*/
+
+//As you can tell by the name, these are macros that accept a variable
+//number of arguments. You cannot address individual arguments in your
+//macros, but you can use the symbol __VA_ARGS__ to reference the
+//remaining arguments. Remember this is still textual manipulation; a
+//va_list is not created in the process.
+
+/*PROBLEM*/ //IF no arguments supplied..Causes syntax error
+
+/*
+ You might have a macro that looks like this:
+ #define THING(string, ...) printf (string, __VA_ARGS__)
+ If you invoke the THING macro with more than one argument, things work
+ out okay.
+ 
+ THING ("hello %s %s\n", "there", "george");
+ 
+ turns into
+ 
+ printf ("hello %s %s\n", "there", "george");
+ 
+ If you do not supply any additional arguments,
+ you get a leftover comma and an accompanying syntax error:
+ 
+ THING ("hi\n");
+ 
+ turns into
+ 
+ printf ("hi\n", );
+ */
+
+/* Solution */
+
+/*
+ if you foresee this being a problem with your macro, 
+        use ##__VA_ARGS__, prepending two pound signs,
+ which causes the preprocessor to eat the preceding comma.
+ With THING defined as 
+ 
+ #define THING(string, ...) printf (string,## __VA_ARGS__)
+ 
+ the failing example
+ 
+ THING ("hi\n");
+ 
+ now expands to
+ 
+ printf ("hi\n");
+ */
+
+int global_level = 50;
+#define DEBUGLOG_(logLevel,format,...) \
+do{\
+    if ((logLevel) > global_level) printf((format),##__VA_ARGS__); \
+}while(0)
+
+void callAllVaArgsMAcro(void)
+{
+DEBUGLOG_ (10, "this will not be seen: %d, %s, %d\n", 10, "hello", 23);
+DEBUGLOG_ (87, "this should be seen: %s, %d\n", "bork", 42);
+DEBUGLOG_ (87, "and this should be seen\n");
+}
+
+/* OUTPUT 
+ 
+ this should be seen: bork, 
+ 42 and this should be seen
+ 
+ */
 
 
+//########################################
+//############ BIT_WISE OPERATORS ###########
+//########################################
+
+// AND &  OR |  XOR ^  NOR ~
+
+//BITWISE SHIFT
+
+/*########################################*/
+            /* BIT MASKS*/
+/*########################################*/
+
+/*
+enum {
+    NSEnumerationConcurrent = (1UL << 0),   // binary 0001
+    NSEnumerationReverse = (1UL << 1),      // binary 0010
+    };
+typedef NSUInteger NSEnumerationOptions;
+ */
+
+
+#define THING_1_MASK    1            //0000 0001
+#define THING_2_MASK    2            //0000 0010
+#define THING_3_MASK    3            //0000 0011
+#define ALL_THINGS      (THING_1_MASK | THING_2_MASK | THING_3_MASK) //0000 0111
+
+#define ANOTHER_MASK    (1 << 5)       //0010 0000 ie
+                                        //0000 0001
+                                        //last bit 5 places shifted
+                                        //to the right
+
+#define ANOTHER_MASK_2    (1 << 6)       //0100 0000 ie
+                                        //0000 0001
+                                        //last bit 5 places shifted
+                                        //to the right
+
+#define ALL_ANOTHERS    (ANOTHER_MASK | ANOTHER_MASK_2)  // 0110 0000
+//i.e 0010 0000 | 0100 0000     0110 0000
+#define ALL_USEFUL_BITS (ALL_THINGS | ALL_ANOTHERS)      // 0110 0111
+//i.e 0000 0111 | 0110 0000     0110 0111
+
+static void showMaskValue(int value)
+{
+    printf("\n");
+    printf("value %x\n",value);
+    
+    if (value & THING_1_MASK) printf ("  THING_1\n");
+    if (value & THING_2_MASK) printf ("  THING_2\n");
+    if (value & THING_3_MASK) printf ("  THING_3\n");
+    
+    if (value & ANOTHER_MASK) printf ("  ANOTHER_MASK\n");
+    if (value & ANOTHER_MASK_2) printf ("  ANOTHER_MASK_2\n");
+    
+     if ((value & ALL_ANOTHERS) == ALL_ANOTHERS) printf ("  ALL ANOTHERS\n");
+    
+}//showMaskValue
+
+void ios7ProgrammingFundamentals(void)
+{
+    
+}//ios7ProgrammingFundamentals
