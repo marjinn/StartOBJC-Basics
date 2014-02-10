@@ -20,6 +20,7 @@
 		15B4F5E41853ABB900131C0D /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4F5E31853ABB900131C0D /* MyClass.m */; };
 		15B4F5E71853CF4C00131C0D /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4F5E61853CF4C00131C0D /* Employee.m */; };
 		15B4F5EA1853F3C900131C0D /* NSString+NSString_CnvertWSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B4F5E91853F3C900131C0D /* NSString+NSString_CnvertWSpace.m */; };
+		15BD5AC118A9779D007B3FCC /* CQJkvcdemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 15BD5AC018A9779C007B3FCC /* CQJkvcdemo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,8 @@
 		15B4F5E61853CF4C00131C0D /* Employee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
 		15B4F5E81853F3C900131C0D /* NSString+NSString_CnvertWSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSString_CnvertWSpace.h"; sourceTree = "<group>"; };
 		15B4F5E91853F3C900131C0D /* NSString+NSString_CnvertWSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSString_CnvertWSpace.m"; sourceTree = "<group>"; };
+		15BD5ABF18A9779C007B3FCC /* CQJkvcdemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQJkvcdemo.h; sourceTree = "<group>"; };
+		15BD5AC018A9779C007B3FCC /* CQJkvcdemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQJkvcdemo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,8 @@
 		159629A6186525D500E02F2C /* KVO */ = {
 			isa = PBXGroup;
 			children = (
+				15BD5ABF18A9779C007B3FCC /* CQJkvcdemo.h */,
+				15BD5AC018A9779C007B3FCC /* CQJkvcdemo.m */,
 				159629A0186525C700E02F2C /* KVOObservingClass.h */,
 				159629A1186525C700E02F2C /* KVOObservingClass.m */,
 				159629A2186525C700E02F2C /* KVOValueClass.h */,
@@ -231,6 +236,7 @@
 				159FB42B1865BDFC00751231 /* predef.mm in Sources */,
 				159629A5186525C700E02F2C /* KVOValueClass.m in Sources */,
 				15AE8E5618528BC400E3BE91 /* main.m in Sources */,
+				15BD5AC118A9779D007B3FCC /* CQJkvcdemo.m in Sources */,
 				159629A4186525C700E02F2C /* KVOObservingClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

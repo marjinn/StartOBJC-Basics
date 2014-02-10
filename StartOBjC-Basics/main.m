@@ -647,11 +647,11 @@ int main(int argc, const char * argv[])
         QuietLog (@"QuietLog is %@ %@", [NSNumber numberWithInt: 42],num);
         
         //###### FROM iOS 7 Perogramming fundamentals BOOK #######
-        CGPoint myPoint = {4.3,7.1};
-        CGRect myRect = {myPoint,{10.0,20.0}};
-        CGContextRef cF = NULL;
-        CGContextFillRect(cF,myRect);
-        CGContextFillRect(cF, (CGRect){myPoint,{10.0,20.0}});
+//        CGPoint myPoint = {4.3,7.1};
+//        CGRect myRect = {myPoint,{10.0,20.0}};
+//        CGContextRef cF = NULL;
+//        CGContextFillRect(cF,myRect);
+//        CGContextFillRect(cF, (CGRect){myPoint,{10.0,20.0}});
         
     }
     return 0;
