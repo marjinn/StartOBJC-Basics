@@ -13,6 +13,8 @@
 		159FB42B1865BDFC00751231 /* predef.mm in Sources */ = {isa = PBXBuildFile; fileRef = 159FB42A1865BDFC00751231 /* predef.mm */; };
 		159FB42E1865C71200751231 /* SomeOtherClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 159FB42C1865C71200751231 /* SomeOtherClass.cpp */; };
 		159FB432186637CC00751231 /* VariableArgumentListExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 159FB431186637CC00751231 /* VariableArgumentListExample.m */; };
+		15A0D25918C3399100285010 /* FunRunWithTheRunTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A0D25818C3399100285010 /* FunRunWithTheRunTime.m */; };
+		15A7D0DE18BD9CB200FDFDF8 /* F_astEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A7D0DD18BD9CB200FDFDF8 /* F_astEnumerator.m */; };
 		15AE8E5318528BC400E3BE91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15AE8E5218528BC400E3BE91 /* Foundation.framework */; };
 		15AE8E5618528BC400E3BE91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE8E5518528BC400E3BE91 /* main.m */; };
 		15AE8E5A18528BC500E3BE91 /* StartOBjC_Basics.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15AE8E5918528BC500E3BE91 /* StartOBjC_Basics.1 */; };
@@ -49,6 +51,10 @@
 		159FB42D1865C71200751231 /* SomeOtherClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SomeOtherClass.h; sourceTree = "<group>"; };
 		159FB430186637CC00751231 /* VariableArgumentListExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableArgumentListExample.h; sourceTree = "<group>"; };
 		159FB431186637CC00751231 /* VariableArgumentListExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableArgumentListExample.m; sourceTree = "<group>"; };
+		15A0D25718C3399100285010 /* FunRunWithTheRunTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunRunWithTheRunTime.h; sourceTree = "<group>"; };
+		15A0D25818C3399100285010 /* FunRunWithTheRunTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunRunWithTheRunTime.m; sourceTree = "<group>"; };
+		15A7D0DC18BD9CB200FDFDF8 /* F_astEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F_astEnumerator.h; sourceTree = "<group>"; };
+		15A7D0DD18BD9CB200FDFDF8 /* F_astEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F_astEnumerator.m; sourceTree = "<group>"; };
 		15AE8E4F18528BC400E3BE91 /* StartOBjC-Basics */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "StartOBjC-Basics"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15AE8E5218528BC400E3BE91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		15AE8E5518528BC400E3BE91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -119,6 +125,24 @@
 			name = VariableArgumentListExample;
 			sourceTree = "<group>";
 		};
+		15A0D25A18C339A200285010 /* FunRunWithTheRunTime */ = {
+			isa = PBXGroup;
+			children = (
+				15A0D25718C3399100285010 /* FunRunWithTheRunTime.h */,
+				15A0D25818C3399100285010 /* FunRunWithTheRunTime.m */,
+			);
+			name = FunRunWithTheRunTime;
+			sourceTree = "<group>";
+		};
+		15A7D0DB18BD172100FDFDF8 /* FastEnumeration */ = {
+			isa = PBXGroup;
+			children = (
+				15A7D0DC18BD9CB200FDFDF8 /* F_astEnumerator.h */,
+				15A7D0DD18BD9CB200FDFDF8 /* F_astEnumerator.m */,
+			);
+			name = FastEnumeration;
+			sourceTree = "<group>";
+		};
 		15AE8E4618528BC400E3BE91 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +171,8 @@
 		15AE8E5418528BC400E3BE91 /* StartOBjC-Basics */ = {
 			isa = PBXGroup;
 			children = (
+				15A0D25A18C339A200285010 /* FunRunWithTheRunTime */,
+				15A7D0DB18BD172100FDFDF8 /* FastEnumeration */,
 				15AE8E5518528BC400E3BE91 /* main.m */,
 				15B4F5DF185381A600131C0D /* Player.h */,
 				15B4F5E0185381A600131C0D /* Player.m */,
@@ -228,6 +254,8 @@
 			files = (
 				15B4F5E41853ABB900131C0D /* MyClass.m in Sources */,
 				159FB42E1865C71200751231 /* SomeOtherClass.cpp in Sources */,
+				15A0D25918C3399100285010 /* FunRunWithTheRunTime.m in Sources */,
+				15A7D0DE18BD9CB200FDFDF8 /* F_astEnumerator.m in Sources */,
 				15B4F5EA1853F3C900131C0D /* NSString+NSString_CnvertWSpace.m in Sources */,
 				159FB432186637CC00751231 /* VariableArgumentListExample.m in Sources */,
 				15B4F5E71853CF4C00131C0D /* Employee.m in Sources */,
