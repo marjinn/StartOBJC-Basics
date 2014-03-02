@@ -9,6 +9,9 @@
 #import "FunRunWithTheRunTime.h"
 #import <objc/runtime.h>
 
+#pragma mark
+#pragma Dynamic Method Resolution
+
 @implementation FunRunWithTheRunTime
 
 /*
@@ -94,5 +97,117 @@ void backGrounNotificationCall(id self,SEL _cmd,NSNotification* notification)
 }
 
 
+#pragma mark
+#pragma Getting a method Address
+/*
+ * The only way to circumvent dynamic binding is to get the address of a method and call it directly as if it were a function. This might be appropriate on the rare occasions when a particular method will be performed many times in succession and you want to avoid the overhead of messaging each time the method is performed.
+ *  This might be appropriate on the rare occasions when a particular method will be performed many times in succession and you want to avoid the overhead of messaging each time the method is performed.
+ */
+
+/*
+ * 1) Create a function pointer with input parameters of the selctor
+        including the hidden ones id & SEL 
+    and also the return type
+ 
+    for eg: 
+    Method :      -(void)MethodToBeCalled:(BOOL)someBool
+    IMP Pointer : void(*setter)(__strong id ,SEL ,BOOL );
+                    name of the poiner could be anything
+    
+ * 2) get the actual method Implementation ie a function pointer
+        setter = (void(*)(__strong id ,SEL ,BOOL ))
+    [self methodForSelector:@selector(MethodToBeCalled:)];
+ 
+ */
+-(void)callAMethodsImplementationOevrAndOverAgain
+{
+    
+    void(*setter)(__strong id ,SEL ,BOOL );
+    
+    int i;
+    
+    setter = (void(*)(__strong id ,SEL ,BOOL ))
+    [self methodForSelector:@selector(MethodToBeCalled:)];
+    
+    for (i = 0; i < 1000 ; i++)
+    {
+        //
+        setter(self,@selector(MethodToBeCalled:),YES);
+    }
+    
+    return;
+}
+
+-(void)MethodToBeCalled:(BOOL)someBool
+{
+    NSLog(@"string\n%@",NSStringFromSelector(_cmd));
+    return;
+}
+
+
+-(void)getPr
+{
+    id LenderClass;
+    LenderClass = objc_getClass("Lender");
+    
+    unsigned int outCount;
+    outCount = 0;
+    
+    objc_property_t* properties;
+    properties = class_copyPropertyList(LenderClass, &outCount);
+    
+    //get property with name alone
+    for (int i = 0; i < outCount; i++) {
+        objc_property_t property;
+        property = properties[i];
+        
+        fprintf(stdout,"%s %s\n",
+                property_getName(property),
+                property_getAttributes(property)
+                );
+        
+    }
+}
+
 
 @end
+
+#pragma mark
+#pragma Getting the list of properties
+@interface Lender : NSObject
+{
+    float alone;
+    int (*functionPointerDefault)(char *);
+}
+
+@property float alone;
+//@property (nonatomic)  int (*functionPointerDefault)(char *);
+
+@end
+
+@implementation Lender
+@synthesize alone;
+//@synthesize functionPointerDefault;
+//methods
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        //
+        //[self setFunctionPointerDefault:function_PointerDefault];
+        self->functionPointerDefault = function_PointerDefault;
+    }
+    return self;
+}
+
+int function_PointerDefault(char *Woah)
+{
+    printf("%s",__func__);
+    return 0;
+}
+
+
+@end
+
+
+
