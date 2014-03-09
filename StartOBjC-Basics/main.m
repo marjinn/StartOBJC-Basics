@@ -20,6 +20,106 @@
 
 #import "VariableArgumentListExample.h"
 
+#import "F_astEnumerator.h"
+
+#import "LifoList.h"
+
+/*
+ * Linked List
+ */
+struct node {
+    int x;
+    struct node *next;
+};
+
+/*
+ * FAST ENUMERATION
+ */
+@interface Musician : NSObject
+
++(id)musicianWithName:(NSString *)name instrument:(NSString *)instrument;
+
+@property(copy,nonatomic)NSString* name;
+@property(copy,nonatomic)NSString* instrument;
+
+@end
+
+static volatile id _newGlobe = nil;
+@implementation Musician
+-(instancetype)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        /*
+         * set a gobal variable for class methods to use a class instance;
+         */
+        _newGlobe = self;
+    }
+    return self;
+}
+
++(id)musicianWithName:(NSString *)name
+           instrument:(NSString *)instrument
+{
+    /*
+     * create  a temp object and return it - of type self
+     */
+    
+    Musician* tmpHolder;
+    tmpHolder = [[Musician alloc]init];
+    
+    [tmpHolder setName:name];
+    
+    [tmpHolder setInstrument:instrument];
+    
+    return tmpHolder;//autolrelease
+    
+}//musicianWithName
+
+@end
+
+//http://blog.bignerdranch.com/1003-fast-enumeration-part-1/
+
+@interface Orchestra : NSObject <NSFastEnumeration>
+
+-(void)addMusician:(Musician *)musician;
+
+@end//Musician
+
+@implementation Orchestra
+{
+    NSMutableArray* _members;
+    
+}
+
+-(void)addMusician:(Musician *)musician
+{
+    if (!_members)
+    {
+        _members = [NSMutableArray array];
+        
+    }
+    
+    [_members addObject:musician];
+    
+}//addMusician:
+
+
+
+#pragma mark NSFastEnumeration
+-(NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                 objects:(__unsafe_unretained id [])buffer
+                                   count:(NSUInteger)len
+{
+    return [self->_members countByEnumeratingWithState:state
+                                               objects:buffer
+                                                 count:len];
+}//countByEnumeratingWithState
+
+@end//Orchestra
+
 
 
 
@@ -28,6 +128,11 @@
 //int bar;
 
 void classTestFunc(void);
+
+/*
+ * For enumeration testing
+ */
+static void printIntegers(void);
 
 int main(int argc, const char * argv[])
 {
@@ -487,7 +592,7 @@ int main(int argc, const char * argv[])
         NSURL *myURL;
         myURL = [NSURL fileURLWithPath:thepath];
         
-        __autoreleasing NSError* flURLErr = nil;
+         NSError* __autoreleasing flURLErr = nil;
         if ([fileMgr fileExistsAtPath:thepath])
         {
             [fileMgr moveItemAtURL:myURL
@@ -496,7 +601,7 @@ int main(int argc, const char * argv[])
         }
         
         //Read from File
-        __autoreleasing NSError* flRdErr = nil;
+        NSError* __autoreleasing flRdErr = nil;
         NSString* text;
         text = [NSString stringWithContentsOfURL:myURL
                                         encoding:NSUTF8StringEncoding
@@ -653,11 +758,250 @@ int main(int argc, const char * argv[])
 //        CGContextFillRect(cF,myRect);
 //        CGContextFillRect(cF, (CGRect){myPoint,{10.0,20.0}});
         
-    }
+        
+        /*
+         * FAST ENUMERATION
+         */
+        CArray* carray;
+        carray = [[CArray alloc]init];
+        
+        [carray setStrings:@"I", @"seem", @"to", @"be", @"a", @"verb", nil];
+        
+        for (NSString* str in carray)
+        {
+            NSLog(@"string->%@",str);
+        }
+        
+        
+        /*
+         * Fast enumeration supporting class
+         */
+        
+        Orchestra* edgewoodSymphony;
+        edgewoodSymphony = [[Orchestra alloc]init];
+        
+        Musician* __strong peggy;
+        peggy = (Musician*)[Musician musicianWithName:@"Peggy"
+                                           instrument:@"Flute"];
+        
+        [edgewoodSymphony addMusician:peggy];
+        
+        Musician* __strong jim;
+        jim = (Musician*)[Musician musicianWithName:@"Jim"
+                                         instrument:@"Basson"];
+    
+        [edgewoodSymphony addMusician:jim];
+    
+        for (Musician* member in edgewoodSymphony)
+        {
+            NSLog(@"%@ plays The %@",[member name],[member instrument]);
+        }
+        
+        printIntegers();
+        
+        
+        
+        /*
+         * fast ENUMERATION WITH LINKED LIST
+         */
+        
+        LifoList *lifolist = [[LifoList alloc] init];
+        [lifolist addString: @"hello"];
+        [lifolist addString: @"there"];
+        [lifolist addString: @"greeble"];
+        
+        
+        
+        for (NSUInteger i = 0; i < [lifolist count]; i++)
+        {
+            NSLog(@"%ld : %@",i,[lifolist stringatindex:i]);
+        }
+        
+        NSUInteger count = 0;
+        /* WITH NSFASTENUMERATION */
+        for (NSString* string in lifolist)
+        {
+            count++;
+            NSLog(@"\n count : %lu %@\n",(unsigned long)count,string);
+        }
+        
+        
+        /*
+         * LINKED LIST
+         */
+        /*
+         struct node {
+         int x;
+         struct node *next;
+         };
+         */
+        
+        
+        /* unchanging first node */
+        struct node *root = 0;
+        
+        /* now root points to a node struct */
+        root = (struct node *)malloc((sizeof(struct node)));
+        
+        /* 
+         * The node root points to has its next pointer equal to a null pointer
+         * set
+         */
+        root->next = 0;
+        
+        /* By using the -> operator, you can modify what the node,
+         a pointer, (root in this case) points to. */
+        //root->x = 5;
+        
+        /*
+         * This will point to each node as it traverses the list
+         */
+        struct node* conductor = 0;
+        
+        root->x   = 12;
+        conductor = root;
+        
+        if (conductor != 0)/* Make sure there is a place to start */
+        {
+            while (conductor->next != 0)
+            {
+                printf("%d\n",conductor->x);
+                
+                conductor = conductor->next;
+            }
+            
+            printf("%d\n",conductor->x);
+        }
+        
+        /*
+         * Creates a node at the end of the list
+         */
+        conductor->next =  (struct node *)malloc(sizeof(struct node));
+        
+        conductor = conductor->next;
+        
+        if (conductor == 0)
+        {
+            printf("out of memory \n ");
+        }
+        
+        /*
+         * initilaize the new memory
+         */
+        conductor->next =  0;
+        conductor->x    = 42;
+                
+    }//autoreleasepool
     return 0;
 }//main
 
 
+static short intArray[] =
+{
+  1,1,2,3,5,7,12,19,31
+};
+
+static char* ravenArray[] =
+{
+  "once" , "upon", "a", "midnight", "dreary"
+};
+
+typedef struct
+{
+    int value;
+    const char* string;
+    float shoeSize;
+    
+} Groovy;
+
+static Groovy groovyArray[] =
+{
+    {  1, "once" ,   10.5 },
+    {  1, "upon",     8.0 },
+    {  2, "a",       11.0 },
+    {  3, "midnight", 9.0 },
+    {  5, "dreary",  12.5 },
+    {  7, "while",   13.0 },
+    { 12, "I",        8.5 },
+    { 19, "pondered", 9.5 }
+};
+
+/*
+ * using ponter as array
+ * http://blog.bignerdranch.com/1003-fast-enumeration-part-1/
+ */
+static void printIntegers(void)
+{
+    printf("integers:\n");
+    
+    short* scan = NULL;
+    scan = intArray;
+    
+    short* stop = NULL;
+    if (scan)
+    {
+        stop = scan + sizeof(intArray) / sizeof(*intArray);// 18/2
+                        /* 
+                         * This works as intArray is of type short
+                         * and sizeof(short) = 2
+                         * also intArray has 9 members
+                         * each of type short
+                         * so sizeof(intarray) = 9*2 = 18
+                         * scan points to the first member of the array
+                         * so incrementing scan (in a loop until it reaches the array
+                         * count ) is a way of iterating through an array
+                         * THIS IS HOW PEOPLE FIND THE LENGTH OF AN ARRAY IN C
+                         * int arraySize = sizeof(array) / sizeof(array[0]);
+                         */
+        
+        while (scan < stop)/**/
+        {
+            printf("   %d\n", *scan);
+            scan++;
+        }
+        
+        
+    
+    }
+}//printIntegers
+
+
+static void print_Strings(void)
+{
+    printf("%s\n",__func__);
+    
+    char** scan = 0;
+    scan = ravenArray;
+    
+    char** stop = 0;
+    stop = scan + sizeof(ravenArray)/sizeof(*ravenArray);
+    
+    while (scan < stop) {
+        printf("      %s\n",*scan);
+        scan++;
+    }
+    
+}//print_Strings
+
+
+static void printGroovy (void)
+{
+    printf("%s\n",__func__);
+    
+    Groovy* scan = 0;
+    scan = groovyArray;
+    
+    Groovy* stop = 0;
+    stop = scan + (sizeof(groovyArray)/sizeof(*groovyArray));
+    
+    while (scan < stop)
+    {
+        printf("     %d:  %s -> %.lf\n",
+               scan->value,scan->string,scan->shoeSize);
+        scan++;
+    }
+
+}//printGroovy
 
 /*########*/
 //functions
@@ -735,4 +1079,10 @@ void classTestFunc(void)
 //{
 //    return self.hasReleaseToRefreshHeaderView;
 //}
+
+
+
+
+
+
 

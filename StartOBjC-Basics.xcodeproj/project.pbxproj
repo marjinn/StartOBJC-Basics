@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15108CEA1864E695004D61DB /* Cme.c in Sources */ = {isa = PBXBuildFile; fileRef = 15108CE91864E695004D61DB /* Cme.c */; };
+		1552A39B18CB7B3B00581330 /* LifoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1552A39A18CB7B3A00581330 /* LifoList.m */; };
 		159629A4186525C700E02F2C /* KVOObservingClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 159629A1186525C700E02F2C /* KVOObservingClass.m */; };
 		159629A5186525C700E02F2C /* KVOValueClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 159629A3186525C700E02F2C /* KVOValueClass.m */; };
 		159FB42B1865BDFC00751231 /* predef.mm in Sources */ = {isa = PBXBuildFile; fileRef = 159FB42A1865BDFC00751231 /* predef.mm */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		15108CE91864E695004D61DB /* Cme.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Cme.c; sourceTree = "<group>"; };
 		15108CEB1864EA42004D61DB /* Cme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cme.h; sourceTree = "<group>"; };
+		1552A39918CB7B3800581330 /* LifoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LifoList.h; sourceTree = "<group>"; };
+		1552A39A18CB7B3A00581330 /* LifoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LifoList.m; sourceTree = "<group>"; };
 		159629A0186525C700E02F2C /* KVOObservingClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVOObservingClass.h; sourceTree = "<group>"; };
 		159629A1186525C700E02F2C /* KVOObservingClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVOObservingClass.m; sourceTree = "<group>"; };
 		159629A2186525C700E02F2C /* KVOValueClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVOValueClass.h; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 			children = (
 				15A7D0DC18BD9CB200FDFDF8 /* F_astEnumerator.h */,
 				15A7D0DD18BD9CB200FDFDF8 /* F_astEnumerator.m */,
+				1552A39918CB7B3800581330 /* LifoList.h */,
+				1552A39A18CB7B3A00581330 /* LifoList.m */,
 			);
 			name = FastEnumeration;
 			sourceTree = "<group>";
@@ -261,6 +266,7 @@
 				15B4F5E71853CF4C00131C0D /* Employee.m in Sources */,
 				15108CEA1864E695004D61DB /* Cme.c in Sources */,
 				15B4F5E1185381A600131C0D /* Player.m in Sources */,
+				1552A39B18CB7B3B00581330 /* LifoList.m in Sources */,
 				159FB42B1865BDFC00751231 /* predef.mm in Sources */,
 				159629A5186525C700E02F2C /* KVOValueClass.m in Sources */,
 				15AE8E5618528BC400E3BE91 /* main.m in Sources */,

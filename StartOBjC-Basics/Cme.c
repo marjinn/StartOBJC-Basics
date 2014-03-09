@@ -354,7 +354,7 @@ break;  \
     //#### Const and volatile variables ######
     //########################################
     
-    const int i = 23 ;//constant variable ie,read-only
+    __unused const int i = 23 ;//constant variable ie,read-only
     
     //const with pointers
     //------------------
@@ -376,14 +376,14 @@ break;  \
     
     /*const pointer to char*/
     //-----------------------
-    char* const string2 = "bork";
+    __unused char* const string2 = "bork";
     //string2 = "greebie";//Read-only variable is not assignable
     //string2[0] = 'f'; possible but crashing
     
     //------------------------------
     /* const before and after '*' */
     //------------------------------
-    const char* const string3 = "bork";
+    __unused const char* const string3 = "bork";
     //string3 = "greebie";//Read-only variable is not assignable
     //string3[0] = 'f';//Read-only variable is not assignable
     
@@ -394,7 +394,7 @@ break;  \
      If const immediately follows the *, then the pointer itself is considered constant.
      */
     
-    volatile int _and = 3;
+    __unused volatile int _and = 3;
     /*
     Declaring a variable volatile means the value of the variable is
      reloaded from memory every time it is used. This guarantees 
@@ -677,7 +677,7 @@ typedef NSUInteger NSEnumerationOptions;
 #define ALL_USEFUL_BITS (ALL_THINGS | ALL_ANOTHERS)      // 0110 0111
 //i.e 0000 0111 | 0110 0000     0110 0111
 
-static void showMaskValue(int value)
+__unused static void showMaskValue(int value)
 {
     printf("\n");
     printf("value %x\n",value);
